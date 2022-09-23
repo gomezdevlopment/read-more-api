@@ -13,7 +13,6 @@ import java.util.List;
 @RestController
 @RequestMapping()
 public class BookController {
-
     private final BookService bookService;
 
     public BookController(BookService bookService) {
