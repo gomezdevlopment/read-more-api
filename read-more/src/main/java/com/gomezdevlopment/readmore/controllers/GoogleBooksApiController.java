@@ -28,23 +28,25 @@ public class GoogleBooksApiController {
         BookResponse response = restTemplate.getForObject(BASE_URL + input + KEY_PARAM + ApiKey.API_KEY, BookResponse.class);
         if(response != null){
             for(BookItem item : response.getItems()){
-                BookInfo bookInfo = new BookInfo(
-                        item.getVolumeInfo().getTitle(),
-                        item.getVolumeInfo().getAuthors(),
-                        item.getVolumeInfo().getPublisher(),
-                        item.getVolumeInfo().getPublishedDate(),
-                        item.getVolumeInfo().getDescription(),
-                        item.getVolumeInfo().getPageCount(),
-                        item.getVolumeInfo().getPrintType(),
-                        item.getVolumeInfo().getCategories(),
-                        item.getVolumeInfo().getAverageRating(),
-                        item.getVolumeInfo().getRatingsCount(),
-                        item.getVolumeInfo().getMaturityRating(),
-                        item.getVolumeInfo().getImageLinks().getSmallThumbnail(),
-                        item.getVolumeInfo().getImageLinks().getThumbnail(),
-                        item.getVolumeInfo().getLanguage()
-                );
-                listOfBooks.add(bookInfo);
+                if(item.getVolumeInfo().getImageLinks() != null){
+                    BookInfo bookInfo = new BookInfo(
+                            item.getVolumeInfo().getTitle(),
+                            item.getVolumeInfo().getAuthors(),
+                            item.getVolumeInfo().getPublisher(),
+                            item.getVolumeInfo().getPublishedDate(),
+                            item.getVolumeInfo().getDescription(),
+                            item.getVolumeInfo().getPageCount(),
+                            item.getVolumeInfo().getPrintType(),
+                            item.getVolumeInfo().getCategories(),
+                            item.getVolumeInfo().getAverageRating(),
+                            item.getVolumeInfo().getRatingsCount(),
+                            item.getVolumeInfo().getMaturityRating(),
+                            item.getVolumeInfo().getImageLinks().getSmallThumbnail(),
+                            item.getVolumeInfo().getImageLinks().getThumbnail(),
+                            item.getVolumeInfo().getLanguage()
+                    );
+                    listOfBooks.add(bookInfo);
+                }
             }
         }
         return listOfBooks;
