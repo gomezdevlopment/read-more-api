@@ -13,8 +13,10 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
     private Long id;
+    private String bookId;
     private String title;
     private String author;
+    @Column(length = 10000)
     private String description;
     private String startDate;
     private String finishDate;

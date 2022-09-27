@@ -34,3 +34,6 @@ build/
 
 ### API Key ###
 src/main/java/com/gomezdevlopment/readmore/ApiKey.java
+
+### OAuth ###
+src/main/java/resources/application.yml

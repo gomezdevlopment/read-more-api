@@ -4,6 +4,7 @@ import com.gomezdevlopment.readmore.ApiKey;
 import com.gomezdevlopment.readmore.models.BookInfo;
 import com.gomezdevlopment.readmore.models.googleBooksJsonModels.BookItem;
 import com.gomezdevlopment.readmore.models.googleBooksJsonModels.BookResponse;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ import java.util.List;
 @RequestMapping("/search")
 public class GoogleBooksApiController {
     @RequestMapping("/{input}")
+    @Transactional
     public List<BookInfo> searchBooks(@PathVariable("input") String input){
         ArrayList<BookInfo> listOfBooks = new ArrayList<>();
         RestTemplate restTemplate = new RestTemplate();
@@ -30,6 +32,7 @@ public class GoogleBooksApiController {
             for(BookItem item : response.getItems()){
                 if(item.getVolumeInfo().getImageLinks() != null){
                     BookInfo bookInfo = new BookInfo(
+                            item.getId(),
                             item.getVolumeInfo().getTitle(),
                             item.getVolumeInfo().getAuthors(),
                             item.getVolumeInfo().getPublisher(),

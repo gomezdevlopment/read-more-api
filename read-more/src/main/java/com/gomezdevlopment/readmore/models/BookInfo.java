@@ -8,6 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class BookInfo {
+    String id;
     String title;
     String[] authors;
     String publisher;
