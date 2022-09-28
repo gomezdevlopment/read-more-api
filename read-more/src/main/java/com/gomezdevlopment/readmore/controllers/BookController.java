@@ -19,8 +19,9 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    @GetMapping("/all")
-    public ResponseEntity<List<Book>> getUserBooks(String userId){
+    @Transactional
+    @GetMapping("/all/{userId}")
+    public ResponseEntity<List<Book>> getUserBooks(@PathVariable("userId") String userId){
         List<Book> books = bookService.getUserBooks(userId);
         return new ResponseEntity<>(books, HttpStatus.OK);
     }
