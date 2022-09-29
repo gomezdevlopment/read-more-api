@@ -36,4 +36,4 @@ build/
 src/main/java/com/gomezdevlopment/readmore/ApiKey.java
 
 ### OAuth ###
-src/main/java/resources/application.yml
+src/main/resources/application.yml

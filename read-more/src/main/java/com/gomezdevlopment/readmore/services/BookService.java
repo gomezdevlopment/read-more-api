@@ -30,4 +30,8 @@ public class BookService {
     public List<Book> getUserBooks(String userId){
         return bookRepository.getUserBooks(userId);
     }
+
+    public Book getBookById(Long id){
+        return bookRepository.getBookById(id);
+    }
 }

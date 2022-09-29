@@ -45,4 +45,10 @@ public class BookController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @Transactional
+    @GetMapping("/book/{id}")
+    public ResponseEntity<Book> getBookById(@PathVariable("id") Long id){
+        Book book = bookService.getBookById(id);
+        return new ResponseEntity<>(book, HttpStatus.OK);
+    }
 }
